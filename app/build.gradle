@@ -20,6 +20,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_API_RANDOM", "\"https://www.themealdb.com/api/json/v1/1/random.php\"")
         buildConfigField("String", "BASE_API_CATEGORIES", "\"https://www.themealdb.com/api/json/v1/1/categories.php\"")
         buildConfigField("String", "BASE_API_FILTER", "\"https://www.themealdb.com/api/json/v1/1/filter.php?c={strCategory}\"")
         buildConfigField("String", "BASE_API_DETAIL", "\"https://www.themealdb.com/api/json/v1/1/lookup.php?i={idMeal}\"")
@@ -53,7 +54,9 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
     //glide for img
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    
+    //swipe refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
