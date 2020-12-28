@@ -1,6 +1,7 @@
 package com.kikulabs.foodrecipes.model
 
 class DataRecipes (
+    var idMeal: String? = null,
     var strMeal: String? = null,
     var strCategory: String? = null,
     var strArea: String? = null,
