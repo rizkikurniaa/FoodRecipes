@@ -38,6 +38,8 @@ class ListRecommendationAdapter : RecyclerView.Adapter<ListRecommendationAdapter
 
         with(holder) {
             binding.tvMeal.text = data.strMeal
+            binding.tvArea.text = data.strArea
+            binding.tvCategory.text = data.strCategory
             Glide.with(itemView.context)
                 .load(data.strMealThumb)
                 .placeholder(R.drawable.placeholder)

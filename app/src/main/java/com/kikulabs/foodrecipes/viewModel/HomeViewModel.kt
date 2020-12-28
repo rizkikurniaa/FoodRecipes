@@ -36,6 +36,8 @@ class HomeViewModel: ViewModel() {
 
                                 recommendItems.strMeal = data.getString("strMeal")
                                 recommendItems.strMealThumb = data.getString("strMealThumb")
+                                recommendItems.strArea = data.getString("strArea")
+                                recommendItems.strCategory = data.getString("strCategory")
 
                                 recommendation.add(recommendItems)
                             }
