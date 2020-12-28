@@ -22,7 +22,7 @@
         <ImageView
             android:id="@+id/iv_meal"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="175dp"
             android:layout_alignParentRight="true"
             android:scaleType="centerCrop"
             tools:src="@drawable/placeholder" />
@@ -69,43 +69,56 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Fried chicken" />
 
-            <TextView
-                android:id="@+id/tv_area"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:gravity="right"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/view"
-                app:layout_constraintEnd_toStartOf="@+id/view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view"
-                tools:text="French" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="1dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorGrey"
+                android:gravity="center"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@+id/tv_meal"
                 app:layout_constraintStart_toStartOf="@+id/tv_meal"
-                app:layout_constraintTop_toBottomOf="@+id/tv_meal" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_meal">
 
-            <TextView
-                android:id="@+id/tv_category"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:gravity="left"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="@+id/view"
-                tools:text="Vegetarian" />
+                <ImageView
+                    android:id="@+id/iv_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_flag"
+                    app:tint="@color/teal_700" />
+
+                <TextView
+                    android:id="@+id/tv_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textSize="12sp"
+                    tools:text="French" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="1dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/colorGrey" />
+
+                <ImageView
+                    android:id="@+id/iv_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/ic_category"
+                    app:tint="@color/teal_700" />
+
+                <TextView
+                    android:id="@+id/tv_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="12sp"
+                    tools:text="Vegetarian" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
