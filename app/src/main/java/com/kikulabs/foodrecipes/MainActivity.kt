@@ -9,7 +9,10 @@ import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.kikulabs.foodrecipes.adapter.GridCategoriesAdapter
 import com.kikulabs.foodrecipes.adapter.ListRecommendationAdapter
 import com.kikulabs.foodrecipes.databinding.ActivityMainBinding
 import com.kikulabs.foodrecipes.viewModel.HomeViewModel
@@ -17,6 +20,7 @@ import com.kikulabs.foodrecipes.viewModel.HomeViewModel
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var listRecommendationAdapter: ListRecommendationAdapter
+    private lateinit var gridCategoriesAdapter: GridCategoriesAdapter
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,12 +56,21 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.toolbarHome.searchRecipe.isFocusable = false
 
         binding.rvRecommendation.setHasFixedSize(true)
+        binding.rvCategories.setHasFixedSize(true)
 
         listRecommendationAdapter = ListRecommendationAdapter()
         listRecommendationAdapter.notifyDataSetChanged()
 
         binding.rvRecommendation.layoutManager = LinearLayoutManager(this)
         binding.rvRecommendation.adapter = listRecommendationAdapter
+
+
+        gridCategoriesAdapter = GridCategoriesAdapter()
+        gridCategoriesAdapter.notifyDataSetChanged()
+
+        binding.rvCategories.layoutManager =
+            GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
+        binding.rvCategories.adapter = gridCategoriesAdapter
 
     }
 
@@ -76,6 +89,15 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         })
 
+        homeViewModel.getCategories().observe(this, Observer { categories ->
+            if (categories.isNotEmpty()) {
+                gridCategoriesAdapter.setData(categories)
+                showLoading(false)
+            } else {
+                showLoading(false)
+            }
+        })
+
     }
 
     private fun initListener() {
@@ -83,11 +105,13 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.swLayout.post {
             showLoading(true)
             homeViewModel.setRecommendation()
+            homeViewModel.setCategories()
         }
 
         binding.swLayout.setOnRefreshListener {
             showLoading(true)
             homeViewModel.setRecommendation()
+            homeViewModel.setCategories()
         }
 
     }
