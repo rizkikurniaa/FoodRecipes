@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Food Recipes</string>
+    <string name="hello_chef">Hello, chef!</string>
+    <string name="home_greeting">What do you want to cook today?</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="categories">Categories</string>
 </resources>
