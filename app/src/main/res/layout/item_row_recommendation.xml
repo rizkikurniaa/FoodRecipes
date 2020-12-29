@@ -23,7 +23,6 @@
             android:id="@+id/iv_meal"
             android:layout_width="match_parent"
             android:layout_height="175dp"
-            android:layout_alignParentRight="true"
             android:scaleType="centerCrop"
             tools:src="@drawable/placeholder" />
 
