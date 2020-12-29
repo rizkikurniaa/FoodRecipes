@@ -118,6 +118,20 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private fun showLoading(state: Boolean) {
         binding.swLayout.isRefreshing = state
+
+        if (state){
+
+            binding.shimmerRecommendation.startShimmerAnimation()
+            binding.shimmerCategories.startShimmerAnimation()
+
+        }else{
+
+            binding.shimmerRecommendation.stopShimmerAnimation()
+            binding.shimmerCategories.stopShimmerAnimation()
+            binding.shimmerRecommendation.visibility = View.GONE
+            binding.shimmerCategories.visibility = View.GONE
+
+        }
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
