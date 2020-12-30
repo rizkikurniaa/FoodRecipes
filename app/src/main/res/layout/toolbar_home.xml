@@ -67,8 +67,7 @@
                     android:src="@drawable/ic_search"
                     app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView2"
-                    app:tint="@color/colorGrey" />
+                    app:layout_constraintTop_toTopOf="@+id/textView2"/>
 
                 <TextView
                     android:id="@+id/textView2"
