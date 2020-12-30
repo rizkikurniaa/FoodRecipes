@@ -1,11 +1,14 @@
 package com.kikulabs.foodrecipes.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kikulabs.foodrecipes.R
+import com.kikulabs.foodrecipes.activity.DetailActivity
 import com.kikulabs.foodrecipes.databinding.ItemRowRecommendationBinding
 import com.kikulabs.foodrecipes.model.DataRecipes
 
@@ -44,6 +47,16 @@ class ListRecommendationAdapter : RecyclerView.Adapter<ListRecommendationAdapter
                 .load(data.strMealThumb)
                 .placeholder(R.drawable.placeholder)
                 .into(binding.ivMeal)
+
+            itemView.setOnClickListener {
+
+                val context: Context = it!!.context
+                val intent = Intent(context, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_RECIPE, data)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                context.startActivity(intent)
+
+            }
         }
     }
 }
