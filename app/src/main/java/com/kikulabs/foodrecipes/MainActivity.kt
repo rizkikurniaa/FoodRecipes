@@ -40,21 +40,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.toolbarHome.collapseToolbar.setExpandedTitleColor(Color.argb(0, 0, 0, 0))
         binding.toolbarHome.collapseToolbar.setContentScrimColor(resources.getColor(R.color.white))
 
-        val searchPlateId: Int = binding.toolbarHome.searchRecipe.context.resources
-            .getIdentifier("android:id/search_plate", null, null)
-        val searchPlate: View =
-            binding.toolbarHome.searchRecipe.findViewById(searchPlateId)
-        searchPlate.setBackgroundColor(Color.TRANSPARENT)
-
-        val linearLayout1 = binding.toolbarHome.searchRecipe.getChildAt(0) as LinearLayout
-        val linearLayout2 = linearLayout1.getChildAt(2) as LinearLayout
-        val linearLayout3 = linearLayout2.getChildAt(1) as LinearLayout
-        val autoComplete = linearLayout3.getChildAt(0) as AutoCompleteTextView
-        autoComplete.textSize = 14f
-
-        binding.toolbarHome.searchRecipe.setOnQueryTextListener(this)
-        binding.toolbarHome.searchRecipe.isFocusable = false
-
         binding.rvRecommendation.setHasFixedSize(true)
         binding.rvCategories.setHasFixedSize(true)
 

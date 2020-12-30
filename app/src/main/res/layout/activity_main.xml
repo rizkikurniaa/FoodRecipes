@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkGreen"
     tools:context="MainActivity">
 
     <include
@@ -14,8 +15,8 @@
         android:id="@+id/sw_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
         android:background="@color/white"
+        android:padding="16dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.core.widget.NestedScrollView
@@ -30,8 +31,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recommendation"
-                    android:textColor="@color/teal_200"
+                    android:text="@string/recommended"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -66,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/categories"
-                    android:textColor="@color/teal_200"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
