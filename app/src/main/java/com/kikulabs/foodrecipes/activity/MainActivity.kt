@@ -1,17 +1,16 @@
-package com.kikulabs.foodrecipes
+package com.kikulabs.foodrecipes.activity
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AutoCompleteTextView
-import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kikulabs.foodrecipes.R
 import com.kikulabs.foodrecipes.adapter.GridCategoriesAdapter
 import com.kikulabs.foodrecipes.adapter.ListRecommendationAdapter
 import com.kikulabs.foodrecipes.databinding.ActivityMainBinding
@@ -38,7 +37,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.swLayout.setColorSchemeColors(myColor)
 
         binding.toolbarHome.collapseToolbar.setExpandedTitleColor(Color.argb(0, 0, 0, 0))
-        binding.toolbarHome.collapseToolbar.setContentScrimColor(resources.getColor(R.color.white))
+        binding.toolbarHome.collapseToolbar.setContentScrimColor(resources.getColor(
+            R.color.white
+        ))
 
         binding.rvRecommendation.setHasFixedSize(true)
         binding.rvCategories.setHasFixedSize(true)
