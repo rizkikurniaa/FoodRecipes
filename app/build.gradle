@@ -55,6 +55,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     //swipe refresh
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    //justified text
+    implementation 'com.uncopt:android.justified:1.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
