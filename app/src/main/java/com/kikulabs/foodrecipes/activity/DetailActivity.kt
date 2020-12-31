@@ -1,7 +1,7 @@
 package com.kikulabs.foodrecipes.activity
 
+import android.graphics.Color
 import android.os.Bundle
-import android.text.Html
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -26,25 +26,41 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initView() {
+        //handle color toolbar when scroll up
+        binding.collapseToolbar.setExpandedTitleColor(Color.argb(0, 0, 0, 0))
+        binding.collapseToolbar.setContentScrimColor(resources.getColor(R.color.white))
+        //added icon to navigation
+        binding.toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_back)
 
         val selectedRecipe: DataRecipes? = intent.getParcelableExtra(EXTRA_RECIPE)
 
         if (selectedRecipe != null) {
 
-            binding.toolbar.tvTitle.text = selectedRecipe.strMeal
-            binding.toolbar.tvSubTitle.text = "${selectedRecipe.strArea} | ${selectedRecipe.strCategory}"
+            binding.tvMeal.text = selectedRecipe.strMeal
+            binding.tvSubMeal.text = "${selectedRecipe.strArea} | ${selectedRecipe.strCategory}"
+
+            Glide.with(this)
+                .load(selectedRecipe.strMealThumb)
+                .placeholder(R.drawable.placeholder)
+                .into(binding.ivBgMeal)
+
+            Glide.with(this)
+                .load(selectedRecipe.strMealThumb)
+                .circleCrop()
+                .placeholder(R.drawable.placeholder)
+                .into(binding.ivMeal)
 
         }
 
     }
 
-    private fun initListener(){
-        binding.toolbar.ibBack.setOnClickListener(this)
+    private fun initListener() {
+        binding.toolbar.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.ib_back -> {
+            R.id.toolbar -> {
                 onBackPressed()
             }
         }
