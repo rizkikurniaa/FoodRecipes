@@ -4,4 +4,7 @@
     <string name="home_greeting">What do you want to cook today?</string>
     <string name="recommended">Recommended</string>
     <string name="categories">Categories</string>
+    <string name="ingredients">Ingredients :</string>
+    <string name="instructions">Instructions :</string>
+    <string name="watch_video">Watch Video</string>
 </resources>
