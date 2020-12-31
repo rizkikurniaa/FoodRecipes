@@ -66,47 +66,163 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sw_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="10dp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_meal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Fried chicken" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="55dp">
 
-            <TextView
-                android:id="@+id/tv_sub_meal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_meal"
-                app:layout_constraintStart_toStartOf="@+id/tv_meal"
-                app:layout_constraintTop_toBottomOf="@+id/tv_meal"
-                tools:text="US | Lunch" />
+                <TextView
+                    android:id="@+id/tv_meal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Fried chicken" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tv_sub_meal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_meal"
+                    app:layout_constraintStart_toStartOf="@+id/tv_meal"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_meal"
+                    tools:text="US | Lunch" />
 
-    </androidx.core.widget.NestedScrollView>
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/ingredients"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sub_meal" />
+
+                <TableLayout
+                    android:id="@+id/tableLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_ingredients"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            tools:text="\u2022 Chili" />
+
+                        <TextView
+                            android:id="@+id/tv_measures"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            tools:text=": 1 pcs" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/instructions"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+
+                <com.uncopt.android.widget.text.justify.JustifiedTextView
+                    android:id="@+id/jtv_instructions"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    tools:text="@tools:sample/lorem/random" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/green_rect"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingTop="12dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="12dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_videos" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/watch_video"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

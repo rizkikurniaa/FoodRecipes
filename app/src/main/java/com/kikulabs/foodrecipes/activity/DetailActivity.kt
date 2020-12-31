@@ -4,10 +4,14 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kikulabs.foodrecipes.R
 import com.kikulabs.foodrecipes.databinding.ActivityDetailBinding
 import com.kikulabs.foodrecipes.model.DataRecipes
+import com.kikulabs.foodrecipes.viewModel.DetailViewModel
+import com.kikulabs.foodrecipes.viewModel.HomeViewModel
 
 class DetailActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
@@ -15,6 +19,8 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private lateinit var binding: ActivityDetailBinding
+    private lateinit var detailViewModel: DetailViewModel
+    private lateinit var idMeal: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +28,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         initView()
+        initViewModel()
         initListener()
     }
 
@@ -35,7 +42,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         val selectedRecipe: DataRecipes? = intent.getParcelableExtra(EXTRA_RECIPE)
 
         if (selectedRecipe != null) {
-
+            idMeal = selectedRecipe.idMeal.toString()
             binding.tvMeal.text = selectedRecipe.strMeal
             binding.tvSubMeal.text = "${selectedRecipe.strArea} | ${selectedRecipe.strCategory}"
 
@@ -54,11 +61,44 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    private fun initViewModel() {
+        detailViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(DetailViewModel::class.java)
+
+        detailViewModel.getDetail().observe(this, Observer { detail ->
+            if (detail != null) {
+                binding.tvIngredients.text = detail.strIngredient
+                binding.tvMeasures.text = detail.strMeasure
+                binding.jtvInstructions.text = detail.strInstructions
+                showLoading(false)
+            } else {
+                showLoading(false)
+            }
+        })
+
+    }
+
     private fun initListener() {
+        binding.swLayout.post {
+            showLoading(true)
+            detailViewModel.setDetail(idMeal)
+        }
+
+        binding.swLayout.setOnRefreshListener {
+            showLoading(true)
+            detailViewModel.setDetail(idMeal)
+        }
+
         binding.toolbar.setOnClickListener(this)
     }
 
-    override fun onClick(v: View?) {
+    private fun showLoading(state: Boolean) {
+        binding.swLayout.isRefreshing = state
+    }
+
+        override fun onClick(v: View?) {
         when (v?.id) {
             R.id.toolbar -> {
                 onBackPressed()
