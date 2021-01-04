@@ -1,6 +1,8 @@
 package com.kikulabs.foodrecipes.activity
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +13,6 @@ import com.kikulabs.foodrecipes.R
 import com.kikulabs.foodrecipes.databinding.ActivityDetailBinding
 import com.kikulabs.foodrecipes.model.DataRecipes
 import com.kikulabs.foodrecipes.viewModel.DetailViewModel
-import com.kikulabs.foodrecipes.viewModel.HomeViewModel
 
 class DetailActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
@@ -21,6 +22,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
     private lateinit var idMeal: String
+    private lateinit var youtubeLink: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +71,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
         detailViewModel.getDetail().observe(this, Observer { detail ->
             if (detail != null) {
+                youtubeLink = detail.strYoutube.toString()
                 binding.tvIngredients.text = detail.strIngredient
                 binding.tvMeasures.text = detail.strMeasure
                 binding.jtvInstructions.text = detail.strInstructions
@@ -92,16 +95,22 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         binding.toolbar.setOnClickListener(this)
+        binding.llYoutube.setOnClickListener(this)
     }
 
     private fun showLoading(state: Boolean) {
         binding.swLayout.isRefreshing = state
     }
 
-        override fun onClick(v: View?) {
-        when (v?.id) {
+    override fun onClick(v: View) {
+        when (v.id) {
             R.id.toolbar -> {
                 onBackPressed()
+            }
+            R.id.ll_youtube -> {
+                val intentYoutube = Intent(Intent.ACTION_VIEW)
+                intentYoutube.data = Uri.parse(youtubeLink)
+                startActivity(intentYoutube)
             }
         }
     }
