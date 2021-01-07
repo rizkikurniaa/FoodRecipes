@@ -29,20 +29,23 @@
                 android:id="@+id/tv_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:textColor="@color/darkGreen"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="Fried Chicken" />
 
             <TextView
-                android:id="@+id/tv_description"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                tools:text="American, Dinner" />
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/ic_favorite_border"
+                android:drawablePadding="5dp"
+                android:text="@string/favorite"
+                android:textColor="@color/black" />
 
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 
