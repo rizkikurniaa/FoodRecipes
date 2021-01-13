@@ -46,7 +46,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         if (selectedRecipe != null) {
             idMeal = selectedRecipe.idMeal.toString()
             binding.tvMeal.text = selectedRecipe.strMeal
-            binding.tvSubMeal.text = "${selectedRecipe.strArea} | ${selectedRecipe.strCategory}"
 
             Glide.with(this)
                 .load(selectedRecipe.strMealThumb)
@@ -71,6 +70,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
         detailViewModel.getDetail().observe(this, Observer { detail ->
             if (detail != null) {
+                binding.tvSubMeal.text = "${detail.strArea} | ${detail.strCategory}"
                 youtubeLink = detail.strYoutube.toString()
                 binding.tvIngredients.text = detail.strIngredient
                 binding.tvMeasures.text = detail.strMeasure
