@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginRight="56dp"
                 android:textColor="@color/darkGreen"
                 android:textSize="16sp"
                 android:textStyle="bold"
