@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodRecipes"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DetailActivity"></activity>
+        <activity android:name=".activity.FilterRecipesActivity"></activity>
+        <activity android:name=".activity.DetailActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
