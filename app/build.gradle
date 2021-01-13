@@ -21,8 +21,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_API", "\"https://www.themealdb.com/api/json/v1/1/\"")
-        buildConfigField("String", "BASE_API_FILTER", "\"https://www.themealdb.com/api/json/v1/1/filter.php?c={strCategory}\"")
-        buildConfigField("String", "BASE_API_DETAIL", "\"https://www.themealdb.com/api/json/v1/1/lookup.php?i={idMeal}\"")
     }
 
     buildTypes {
