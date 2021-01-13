@@ -33,6 +33,8 @@ class DetailViewModel: ViewModel() {
                                 val data = dataList.getJSONObject(i)
                                 val detail = DataRecipes()
 
+                                detail.strArea = data.getString("strArea")
+                                detail.strCategory = data.getString("strCategory")
                                 detail.strInstructions = data.getString("strInstructions")
                                 detail.strYoutube = data.getString("strYoutube")
                                 detail.strSource = data.getString("strSource")
