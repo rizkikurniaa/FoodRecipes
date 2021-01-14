@@ -8,20 +8,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_recipe"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="50dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_recipe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="@+id/iv_recipe"
+        app:layout_constraintTop_toTopOf="@+id/iv_recipe">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="50dp"
             android:orientation="vertical"
             android:padding="8dp">
 
@@ -31,6 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="56dp"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/darkGreen"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -52,13 +55,13 @@
 
     <ImageView
         android:id="@+id/iv_recipe"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:elevation="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/cv_recipe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cv_recipe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
 
