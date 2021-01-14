@@ -2,6 +2,7 @@ package com.kikulabs.foodrecipes.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +42,19 @@ class ListFilteredRecipesAdapter :
         val data = dataFiltered[position]
 
         with(holder) {
+
+            val colors = arrayOf(
+                Color.parseColor("#FF9AA2"),
+                Color.parseColor("#FFB7B2"),
+                Color.parseColor("#FFDAC1"),
+                Color.parseColor("#E2F0CB"),
+                Color.parseColor("#B5EAD7"),
+                Color.parseColor("#C7CEEA"),
+                Color.parseColor("#E7E6CE")
+            )
+            val randomColor = colors.random()
+            binding.cvRecipe.setCardBackgroundColor(randomColor)
+
             binding.tvRecipe.text = data.strMeal
             Glide.with(itemView.context)
                 .load(data.strMealThumb)
