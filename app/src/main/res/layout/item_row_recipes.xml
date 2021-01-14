@@ -34,7 +34,7 @@
                 android:layout_marginRight="56dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/darkGreen"
+                android:textColor="@color/brown"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="Fried Chicken" />
@@ -47,7 +47,7 @@
                 android:drawableLeft="@drawable/ic_favorite_border"
                 android:drawablePadding="5dp"
                 android:text="@string/favorite"
-                android:textColor="@color/black" />
+                android:textColor="@color/brown" />
 
         </LinearLayout>
 
