@@ -54,6 +54,7 @@
             app:layout_collapseMode="pin">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
