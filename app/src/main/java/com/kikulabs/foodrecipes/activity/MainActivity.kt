@@ -1,10 +1,10 @@
 package com.kikulabs.foodrecipes.activity
 
+import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,7 +16,7 @@ import com.kikulabs.foodrecipes.adapter.ListRecommendationAdapter
 import com.kikulabs.foodrecipes.databinding.ActivityMainBinding
 import com.kikulabs.foodrecipes.viewModel.HomeViewModel
 
-class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var listRecommendationAdapter: ListRecommendationAdapter
     private lateinit var gridCategoriesAdapter: GridCategoriesAdapter
@@ -38,9 +38,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.swLayout.setColorSchemeColors(myColor)
 
         binding.toolbarHome.collapseToolbar.setExpandedTitleColor(Color.argb(0, 0, 0, 0))
-        binding.toolbarHome.collapseToolbar.setContentScrimColor(resources.getColor(
-            R.color.white
-        ))
+        binding.toolbarHome.collapseToolbar.setContentScrimColor(
+            resources.getColor(
+                R.color.white
+            )
+        )
 
         binding.rvRecommendation.setHasFixedSize(true)
         binding.rvCategories.setHasFixedSize(true)
@@ -101,17 +103,18 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             homeViewModel.setCategories()
         }
 
+        binding.toolbarHome.clSearch.setOnClickListener(this)
     }
 
     private fun showLoading(state: Boolean) {
         binding.swLayout.isRefreshing = state
 
-        if (state){
+        if (state) {
 
             binding.shimmerRecommendation.startShimmerAnimation()
             binding.shimmerCategories.startShimmerAnimation()
 
-        }else{
+        } else {
 
             binding.shimmerRecommendation.stopShimmerAnimation()
             binding.shimmerCategories.stopShimmerAnimation()
@@ -121,12 +124,14 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun onQueryTextChange(newText: String?): Boolean {
-        TODO("Not yet implemented")
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.cl_search -> {
+                val intent = Intent(this, SearchActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+            }
+        }
     }
 
 }
