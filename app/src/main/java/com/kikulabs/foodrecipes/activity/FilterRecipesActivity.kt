@@ -48,7 +48,6 @@ class FilterRecipesActivity : AppCompatActivity(), View.OnClickListener {
         binding.rvRecipes.layoutManager = LinearLayoutManager(this)
         binding.rvRecipes.adapter = listFilteredRecipesAdapter
 
-
     }
 
     private fun initViewModel() {
