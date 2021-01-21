@@ -1,5 +1,6 @@
 package com.kikulabs.foodrecipes.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -7,9 +8,10 @@ import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import com.kikulabs.foodrecipes.R
 import com.kikulabs.foodrecipes.databinding.ActivitySearchBinding
 
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, View.OnClickListener {
     private lateinit var binding: ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +20,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setContentView(binding.root)
 
         initView()
+        initListener()
 
     }
 
-    fun initView(){
+    private fun initView(){
         val searchPlateId: Int = binding.toolbarSearch.svProduk.context.resources
             .getIdentifier("android:id/search_plate", null, null)
         val searchPlate: View =
@@ -38,11 +41,23 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.toolbarSearch.svProduk.isFocusable = false
     }
 
+    private fun initListener(){
+        binding.toolbarSearch.ibBack.setOnClickListener(this)
+    }
+
     override fun onQueryTextSubmit(query: String?): Boolean {
         TODO("Not yet implemented")
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         TODO("Not yet implemented")
+    }
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.ib_back -> {
+                onBackPressed()
+            }
+        }
     }
 }
